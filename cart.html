@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosár - Woo&Miau</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="cart">
+
+<!-- Navigation -->
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/logo.jpg" alt="Woo&Miau Logo" height="40" class="me-2">
+                <span class="brand-text">Woo&Miau</span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Termékek
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="shop.html?cat=dogs">Kutyáknak</a></li>
+                            <li><a class="dropdown-item" href="shop.html?cat=cats">Macskáknak</a></li>
+                            <li><a class="dropdown-item" href="shop.html?cat=frozen">Fagyasztott termékek</a></li>
+                            <li><a class="dropdown-item" href="shop.html?cat=treats">Jutalomfalatok</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barf-guide.html">BARF Útmutató</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Információ
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="about.html">Rólunk</a></li>
+                            <li><a class="dropdown-item" href="contact.html">Kapcsolat</a></li>
+                            <li><a class="dropdown-item" href="shipping.html">Szállítás</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Search & Actions -->
+                <div class="navbar-actions d-flex align-items-center gap-3">
+                    <!-- Search -->
+                    <div class="search-wrapper">
+                        <form class="d-flex" role="search">
+                            <div class="input-group">
+                                <input class="form-control search-input" type="search" placeholder="Keresés..." aria-label="Keresés">
+                                <button class="btn btn-outline-primary" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-link nav-icon" type="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Bejelentkezés</a></li>
+                            <li><a class="dropdown-item" href="register.html">Regisztráció</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Cart -->
+                    <a href="cart.html" class="btn btn-link nav-icon position-relative">
+                        <i class="bi bi-bag"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary cart-count" id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Main Content -->
+<main class="py-4">
+    <div class="container">
+        
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none">Főoldal</a></li>
+                <li class="breadcrumb-item active">Kosár</li>
+            </ol>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h1 class="display-4 mb-2">Kosár</h1>
+                <p class="lead text-muted">Tekintse át rendelését</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- Cart Items -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="bi bi-bag me-2"></i>Termékek a kosárban</h5>
+                    </div>
+                    <div class="card-body" id="cart-items">
+                        <!-- Cart items will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="shop.html" class="btn btn-outline-primary">
+                                <i class="bi bi-arrow-left me-2"></i>Tovább vásárolok
+                            </a>
+                            <button type="button" class="btn btn-outline-danger" id="clear-cart">
+                                <i class="bi bi-trash me-2"></i>Kosár ürítése
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recommended Products -->
+                <div class="card shadow-sm mt-4">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="bi bi-lightbulb me-2"></i>Ezt is megnézheted</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3" id="recommended-products">
+                            <!-- Recommended products will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="bi bi-receipt me-2"></i>Rendelés összesítő</h5>
+                    </div>
+                    <div class="card-body">
+                        
+                        <!-- Summary Lines -->
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Részösszeg:</span>
+                            <span id="subtotal" class="fw-bold">0 Ft</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Szállítás:</span>
+                            <span id="shipping-cost" class="fw-bold text-success">Ingyenes</span>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mb-2 text-success" id="discount-line" style="display: none;">
+                            <span>Kedvezmény:</span>
+                            <span id="discount-amount" class="fw-bold">-0 Ft</span>
+                        </div>
+                        
+                        <hr>
+                        
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="h5">Összesen:</span>
+                            <span id="cart-total" class="h5 fw-bold text-primary">0 Ft</span>
+                        </div>
+                        
+                        <!-- Promo Code -->
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Kuponkód:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="promo-code" placeholder="Kód megadása">
+                                <button class="btn btn-outline-primary" type="button" id="apply-promo">
+                                    Alkalmaz
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Shipping Options -->
+                        <div class="mb-4">
+                            <label class="form-label small fw-bold">Szállítási mód:</label>
+                            
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="shipping" id="shipping-standard" value="standard" checked>
+                                <label class="form-check-label" for="shipping-standard">
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <div>
+                                            <div class="fw-bold">Normál szállítás</div>
+                                            <small class="text-muted">2-3 munkanap</small>
+                                        </div>
+                                        <span class="fw-bold text-success">Ingyenes</span>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="shipping" id="shipping-express" value="express">
+                                <label class="form-check-label" for="shipping-express">
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <div>
+                                            <div class="fw-bold">Expressz szállítás</div>
+                                            <small class="text-muted">1 munkanap</small>
+                                        </div>
+                                        <span class="fw-bold">1.990 Ft</span>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="shipping" id="shipping-frozen" value="frozen">
+                                <label class="form-check-label" for="shipping-frozen">
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <div>
+                                            <div class="fw-bold">Fagyasztott szállítás</div>
+                                            <small class="text-muted">1-2 munkanap, hűtött</small>
+                                        </div>
+                                        <span class="fw-bold">2.990 Ft</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Trust Badges -->
+                        <div class="mb-4">
+                            <div class="row g-2 text-center">
+                                <div class="col-4">
+                                    <div class="p-2 bg-light rounded">
+                                        <i class="bi bi-shield-check text-success d-block mb-1"></i>
+                                        <small>Biztonságos fizetés</small>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2 bg-light rounded">
+                                        <i class="bi bi-arrow-repeat text-primary d-block mb-1"></i>
+                                        <small>14 napos visszatérítés</small>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="p-2 bg-light rounded">
+                                        <i class="bi bi-truck text-warning d-block mb-1"></i>
+                                        <small>Gyors kiszállítás</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Checkout Button -->
+                        <button type="button" class="btn btn-primary btn-lg w-100 checkout-btn" id="checkout-btn">
+                            <i class="bi bi-credit-card me-2"></i>Pénztárhoz
+                        </button>
+                        
+                    </div>
+                </div>
+                
+                <!-- Checkout Progress -->
+                <div class="card shadow-sm mt-4">
+                    <div class="card-body">
+                        <div class="checkout-progress d-flex align-items-center justify-content-center">
+                            <div class="progress-step active me-3">
+                                <div class="progress-circle bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                    1
+                                </div>
+                                <small>Kosár</small>
+                            </div>
+                            
+                            <div class="progress-line bg-secondary" style="width: 40px; height: 2px;"></div>
+                            
+                            <div class="progress-step mx-3">
+                                <div class="progress-circle bg-light text-muted rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                    2
+                                </div>
+                                <small class="text-muted">Adatok</small>
+                            </div>
+                            
+                            <div class="progress-line bg-secondary" style="width: 40px; height: 2px;"></div>
+                            
+                            <div class="progress-step ms-3">
+                                <div class="progress-circle bg-light text-muted rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                    3
+                                </div>
+                                <small class="text-muted">Fizetés</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer bg-dark text-light py-5 mt-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Woo&Miau</h5>
+                    <p>Természetes BARF táplálás minden kedvencnek. Prémium minőség, szakértő tanácsadás.</p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
+                        <li><a href="#" class="me-3"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Vásárlás</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="shop.html?cat=dogs" class="text-light text-decoration-none">Kutyáknak</a></li>
+                        <li><a href="shop.html?cat=cats" class="text-light text-decoration-none">Macskáknak</a></li>
+                        <li><a href="shop.html?cat=frozen" class="text-light text-decoration-none">Fagyasztott termékek</a></li>
+                        <li><a href="shop.html?cat=treats" class="text-light text-decoration-none">Jutalomfalatok</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Információ</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="barf-guide.html" class="text-light text-decoration-none">BARF Útmutató</a></li>
+                        <li><a href="about.html" class="text-light text-decoration-none">Rólunk</a></li>
+                        <li><a href="contact.html" class="text-light text-decoration-none">Kapcsolat</a></li>
+                        <li><a href="shipping.html" class="text-light text-decoration-none">Szállítás</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Kapcsolat</h5>
+                    <div class="contact-info">
+                        <p><i class="bi bi-envelope me-2"></i> info@woomiau.hu</p>
+                        <p><i class="bi bi-telephone me-2"></i> +36 1 234 5678</p>
+                        <p><i class="bi bi-geo-alt me-2"></i> 1234 Budapest, Példa utca 12.</p>
+                        <p><i class="bi bi-clock me-2"></i> H-P: 9:00-17:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="my-4">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2024 Woo&Miau. Minden jog fenntartva.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="payment-methods">
+                    <span class="me-3">Fizetési módok:</span>
+                    <i class="bi bi-credit-card me-2"></i>
+                    <i class="bi bi-paypal me-2"></i>
+                    <i class="bi bi-bank me-2"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts.js"></script>
+
+<script>
+// Cart-specific functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Shipping option change handler
+    document.querySelectorAll('input[name="shipping"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            updateShippingCost();
+        });
+    });
+    
+    // Promo code handler
+    document.getElementById('apply-promo').addEventListener('click', function() {
+        const promoCode = document.getElementById('promo-code').value.trim();
+        applyPromoCode(promoCode);
+    });
+    
+    // Checkout button handler
+    document.getElementById('checkout-btn').addEventListener('click', function() {
+        // Here you would integrate with Shopify Buy Button or redirect to checkout
+        alert('Átirányítás a Shopify checkout-ra...');
+        // window.location.href = 'https://your-shopify-store.myshopify.com/checkout';
+    });
+    
+    function updateShippingCost() {
+        const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+        const shippingCostEl = document.getElementById('shipping-cost');
+        
+        if (selectedShipping) {
+            switch(selectedShipping.value) {
+                case 'standard':
+                    shippingCostEl.textContent = 'Ingyenes';
+                    shippingCostEl.className = 'fw-bold text-success';
+                    break;
+                case 'express':
+                    shippingCostEl.textContent = '1.990 Ft';
+                    shippingCostEl.className = 'fw-bold';
+                    break;
+                case 'frozen':
+                    shippingCostEl.textContent = '2.990 Ft';
+                    shippingCostEl.className = 'fw-bold';
+                    break;
+            }
+        }
+        
+        // Recalculate total (this would be implemented in the main scripts.js)
+        // updateCartTotal();
+    }
+    
+    function applyPromoCode(code) {
+        // Mock promo code validation
+        const validCodes = {
+            'BARF10': 10, // 10% discount
+            'WELCOME': 1000 // 1000 Ft discount
+        };
+        
+        if (validCodes[code.toUpperCase()]) {
+            const discount = validCodes[code.toUpperCase()];
+            document.getElementById('discount-line').style.display = 'flex';
+            document.getElementById('discount-amount').textContent = 
+                typeof discount === 'number' && discount < 100 
+                    ? `-${discount}%` 
+                    : `-${discount} Ft`;
+            
+            // Show success toast
+            if (window.WooMiau && window.WooMiau.showToast) {
+                window.WooMiau.showToast('Kuponkód sikeresen alkalmazva!', 'success');
+            }
+        } else {
+            // Show error toast
+            if (window.WooMiau && window.WooMiau.showToast) {
+                window.WooMiau.showToast('Érvénytelen kuponkód', 'danger');
+            }
+        }
+    }
+});
+</script>
+
+<style>
+/* Cart-specific styles */
+.cart-item-image {
+    border-radius: 8px;
+}
+
+.checkout-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.progress-step.active {
+    color: var(--brand-primary);
+}
+
+.form-check-label {
+    cursor: pointer;
+    width: 100%;
+}
+
+.form-check-input:checked {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar-actions .search-wrapper {
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .sticky-top {
+        position: static !important;
+    }
+    
+    .checkout-progress .progress-step {
+        margin: 0 0.5rem;
+    }
+    
+    .checkout-progress .progress-line {
+        width: 20px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cart-item-image {
+        margin: 0 auto 1rem auto;
+    }
+}
+</style>
+
+</body>
+</html>

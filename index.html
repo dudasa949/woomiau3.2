@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woo&Miau - Természetes BARF táplálás</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Shopify Buy Button -->
+    <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button.js"></script>
+    
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="home">
+
+<!-- Navigation -->
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/logo.jpg" alt="Woo&Miau Logo" height="40" class="me-2">
+                <span class="brand-text">Woo&Miau</span>
+            </a>
+
+            <!-- Mobile Toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation Menu -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Termékek
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="shop.html?cat=dogs">Kutyáknak</a></li>
+                            <li><a class="dropdown-item" href="shop.html?cat=cats">Macskáknak</a></li>
+                            <li><a class="dropdown-item" href="shop.html?cat=frozen">Fagyasztott termékek</a></li>
+                            <li><a class="dropdown-item" href="shop.html?cat=treats">Jutalomfalatok</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="barf-guide.html">BARF Útmutató</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Információ
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="about.html">Rólunk</a></li>
+                            <li><a class="dropdown-item" href="contact.html">Kapcsolat</a></li>
+                            <li><a class="dropdown-item" href="shipping.html">Szállítás</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Search & Actions -->
+                <div class="navbar-actions d-flex align-items-center gap-3">
+                    <!-- Search -->
+                    <div class="search-wrapper">
+                        <form class="d-flex" role="search">
+                            <div class="input-group">
+                                <input class="form-control search-input" type="search" placeholder="Keresés..." aria-label="Keresés">
+                                <button class="btn btn-outline-primary" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="btn btn-link nav-icon" type="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="login.html">Bejelentkezés</a></li>
+                            <li><a class="dropdown-item" href="register.html">Regisztráció</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Cart -->
+                    <a href="cart.html" class="btn btn-link nav-icon position-relative">
+                        <i class="bi bi-bag"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary cart-count" id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Hero Carousel -->
+<section class="hero-section py-4">
+    <div class="container">
+        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="hero-slide" style="background-image: url('assets/placeholder-1.svg');">
+                        <div class="hero-overlay">
+                            <div class="row align-items-center h-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content text-white">
+                                        <h1 class="hero-title">Prémium BARF Termékek</h1>
+                                        <p class="hero-subtitle">Természetes táplálkozás kedvenceidnek - friss, minőségi alapanyagokból</p>
+                                        <a href="shop.html" class="btn btn-primary btn-lg">Termékek megtekintése</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('assets/placeholder-2.svg');">
+                        <div class="hero-overlay">
+                            <div class="row align-items-center h-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content text-white">
+                                        <h1 class="hero-title">Fagyasztott Húsok</h1>
+                                        <p class="hero-subtitle">Friss minőség, hosszú eltarthatóság - minden kedvencnek</p>
+                                        <a href="shop.html?cat=frozen" class="btn btn-primary btn-lg">Fagyasztott kínálat</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="hero-slide" style="background-image: url('assets/placeholder-3.svg');">
+                        <div class="hero-overlay">
+                            <div class="row align-items-center h-100">
+                                <div class="col-lg-6">
+                                    <div class="hero-content text-white">
+                                        <h1 class="hero-title">Szakértő Tanácsadás</h1>
+                                        <p class="hero-subtitle">BARF útmutatónk segít megtalálni a tökéletes étrendet</p>
+                                        <a href="barf-guide.html" class="btn btn-primary btn-lg">BARF Útmutató</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="products-section py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Kiemelt termékek</h2>
+                <p class="section-subtitle text-muted">A hónap legkedveltebb BARF termékei</p>
+            </div>
+        </div>
+        
+        <div class="product-carousel-container">
+            <div id="featuredCarousel" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row" id="featured-products">
+                            <!-- Products will be loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev product-carousel-control" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="carousel-control-next product-carousel-control" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="shop.html" class="btn btn-outline-primary">Összes termék megtekintése</a>
+        </div>
+    </div>
+</section>
+
+<!-- Product Categories -->
+<section class="categories-section py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Termékkategóriák</h2>
+                <p class="section-subtitle text-muted">Válassz kedvenced igényei szerint</p>
+            </div>
+        </div>
+        
+        <div id="categoryCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row g-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="category-card">
+                                <div class="category-image">
+                                    <img src="assets/placeholder-1.svg" alt="Kutyáknak" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="category-overlay">
+                                    <h4 class="category-title">Kutyáknak</h4>
+                                    <p class="category-description">Minden méretű kutyának</p>
+                                    <a href="shop.html?cat=dogs" class="btn btn-primary">Böngészés</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="category-card">
+                                <div class="category-image">
+                                    <img src="assets/placeholder-2.svg" alt="Macskáknak" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="category-overlay">
+                                    <h4 class="category-title">Macskáknak</h4>
+                                    <p class="category-description">Válogatott cicatápok</p>
+                                    <a href="shop.html?cat=cats" class="btn btn-primary">Böngészés</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="category-card">
+                                <div class="category-image">
+                                    <img src="assets/placeholder-3.svg" alt="Fagyasztott" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="category-overlay">
+                                    <h4 class="category-title">Fagyasztott</h4>
+                                    <p class="category-description">Akciós fagyasztott termékek</p>
+                                    <a href="shop.html?cat=frozen" class="btn btn-primary">Böngészés</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="category-card">
+                                <div class="category-image">
+                                    <img src="assets/placeholder-1.svg" alt="Jutalomfalatok" class="w-100 h-100 object-fit-cover">
+                                </div>
+                                <div class="category-overlay">
+                                    <h4 class="category-title">Jutalomfalatok</h4>
+                                    <p class="category-description">Egészséges snack-ek</p>
+                                    <a href="shop.html?cat=treats" class="btn btn-primary">Böngészés</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="carousel-control-prev category-carousel-control" type="button" data-bs-target="#categoryCarousel" data-bs-slide="prev">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="carousel-control-next category-carousel-control" type="button" data-bs-target="#categoryCarousel" data-bs-slide="next">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- BARF Info Section -->
+<section class="barf-info-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title">Mi a BARF?</h2>
+                <p class="lead">A BARF (Biologically Appropriate Raw Food) egy természetes táplálkozási módszer kutyák és macskák számára.</p>
+                
+                <div class="barf-features">
+                    <div class="barf-feature d-flex align-items-start mb-3">
+                        <div class="feature-icon me-3">
+                            <i class="bi bi-heart text-primary fs-2"></i>
+                        </div>
+                        <div>
+                            <h5>Nyers húsok</h5>
+                            <p class="mb-0">Friss, minőségi húsok és zöldségek keveréke</p>
+                        </div>
+                    </div>
+                    
+                    <div class="barf-feature d-flex align-items-start mb-3">
+                        <div class="feature-icon me-3">
+                            <i class="bi bi-shield-check text-primary fs-2"></i>
+                        </div>
+                        <div>
+                            <h5>Erősebb immunrendszer</h5>
+                            <p class="mb-0">Természetes táplálkozás az egészségért</p>
+                        </div>
+                    </div>
+                    
+                    <div class="barf-feature d-flex align-items-start mb-3">
+                        <div class="feature-icon me-3">
+                            <i class="bi bi-star text-primary fs-2"></i>
+                        </div>
+                        <div>
+                            <h5>Fényes szőrzet</h5>
+                            <p class="mb-0">Látható eredmények már heteken belül</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="barf-guide.html" class="btn btn-primary">Tudj meg többet</a>
+            </div>
+            
+            <div class="col-lg-6">
+                <img src="assets/placeholder-2.svg" alt="BARF táplálás" class="img-fluid rounded shadow-lg">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- New Products -->
+<section class="new-products-section py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Újdonságok</h2>
+                <p class="section-subtitle text-muted">Frissen érkezett termékek</p>
+            </div>
+        </div>
+        
+        <div class="product-carousel-container">
+            <div id="newProductsCarousel" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row" id="new-products">
+                            <!-- Products will be loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev product-carousel-control" type="button" data-bs-target="#newProductsCarousel" data-bs-slide="prev">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="carousel-control-next product-carousel-control" type="button" data-bs-target="#newProductsCarousel" data-bs-slide="next">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="shop.html?sort=new" class="btn btn-outline-primary">Összes újdonság</a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="why-choose-section py-5">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Miért válassz minket?</h2>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-truck text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5>Gyors szállítás</h5>
+                    <p>24-48 órán belül kiszállítjuk a fagyasztott termékeket speciális hűtött szállítással</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-gem text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5>Prémium minőség</h5>
+                    <p>Csak a legjobb beszállítóktól szerezzük be a húsokat és alapanyagokat</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-headset text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5>Szakértő segítség</h5>
+                    <p>Tapasztalt csapatunk segít kiválasztani a megfelelő tápot kedvencednek</p>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon mb-3">
+                        <i class="bi bi-wallet2 text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h5>Kedvező árak</h5>
+                    <p>Folyamatos akciók és mennyiségi kedvezmények nagyobb vásárlásoknál</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews-section py-5 bg-light">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="section-title">Mit mondanak ügyfeleink?</h2>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="rating-overview text-center">
+                    <div class="rating-score display-3 text-primary fw-bold">4.8</div>
+                    <div class="rating-stars mb-2">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                    <p class="text-muted">523 értékelés alapján</p>
+                </div>
+            </div>
+            
+            <div class="col-lg-9">
+                <div id="reviewsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="review-card">
+                                        <div class="review-stars mb-2">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        </div>
+                                        <blockquote class="blockquote">
+                                            <p>"Fantasztikus minőség, a kutyám imádja! Láthatóan jobb kondícióban van a BARF táplálás óta."</p>
+                                        </blockquote>
+                                        <figcaption class="blockquote-footer">
+                                            Kovács Mária
+                                        </figcaption>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="review-card">
+                                        <div class="review-stars mb-2">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        </div>
+                                        <blockquote class="blockquote">
+                                            <p>"Gyors szállítás, minden termék friss volt. Definitíven visszatérő vásárló leszek."</p>
+                                        </blockquote>
+                                        <figcaption class="blockquote-footer">
+                                            Nagy Péter
+                                        </figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-item">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="review-card">
+                                        <div class="review-stars mb-2">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        </div>
+                                        <blockquote class="blockquote">
+                                            <p>"Szakértő tanácsadás és tökéletes termékek. Cicám egészségesebb, mint valaha!"</p>
+                                        </blockquote>
+                                        <figcaption class="blockquote-footer">
+                                            Tóth Anna
+                                        </figcaption>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="review-card">
+                                        <div class="review-stars mb-2">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star text-warning"></i>
+                                        </div>
+                                        <blockquote class="blockquote">
+                                            <p>"Kedvező árak és minőségi termékek. A BARF útmutató nagyban segített a kezdésben."</p>
+                                        </blockquote>
+                                        <figcaption class="blockquote-footer">
+                                            Szabó Gábor
+                                        </figcaption>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#reviewsCarousel" data-bs-slide-to="1"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer bg-dark text-light py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Woo&Miau</h5>
+                    <p>Természetes BARF táplálás minden kedvencnek. Prémium minőség, szakértő tanácsadás.</p>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="me-3"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Vásárlás</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="shop.html?cat=dogs" class="text-light text-decoration-none">Kutyáknak</a></li>
+                        <li><a href="shop.html?cat=cats" class="text-light text-decoration-none">Macskáknak</a></li>
+                        <li><a href="shop.html?cat=frozen" class="text-light text-decoration-none">Fagyasztott termékek</a></li>
+                        <li><a href="shop.html?cat=treats" class="text-light text-decoration-none">Jutalomfalatok</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Információ</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="barf-guide.html" class="text-light text-decoration-none">BARF Útmutató</a></li>
+                        <li><a href="about.html" class="text-light text-decoration-none">Rólunk</a></li>
+                        <li><a href="contact.html" class="text-light text-decoration-none">Kapcsolat</a></li>
+                        <li><a href="shipping.html" class="text-light text-decoration-none">Szállítás</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-section">
+                    <h5 class="footer-title">Kapcsolat</h5>
+                    <div class="contact-info">
+                        <p><i class="bi bi-envelope me-2"></i> info@woomiau.hu</p>
+                        <p><i class="bi bi-telephone me-2"></i> +36 1 234 5678</p>
+                        <p><i class="bi bi-geo-alt me-2"></i> 1234 Budapest, Példa utca 12.</p>
+                        <p><i class="bi bi-clock me-2"></i> H-P: 9:00-17:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="my-4">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0">&copy; 2024 Woo&Miau. Minden jog fenntartva.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="payment-methods">
+                    <span class="me-3">Fizetési módok:</span>
+                    <i class="bi bi-credit-card me-2"></i>
+                    <i class="bi bi-paypal me-2"></i>
+                    <i class="bi bi-bank me-2"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/scripts.js"></script>
+
+</body>
+</html>
